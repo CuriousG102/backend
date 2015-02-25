@@ -7,18 +7,22 @@ from django.db import models
 class Instructor(models.Model):
     last = models.CharField(max_length=50)
     first = models.CharField(max_length=50)
+    bio = models.TextField(verbose_name='Short biography of the professor', 
+                           null=True)
 
 class Course(models.Model):
     uniqueNo = models.IntegerField(verbose_name="Course Unique Number")
 
     #only PDFs will be allowed
-    syllabus = models.FileField(upload_to='syllabi')
+    syllabus = models.FileField(upload_to='syllabi', null=True)
                                   
     instructor = models.ForeignKey('Instructor')
     inst_provided_description = models.TextField(verbose_name='Instructor Provided Description',
-                             help_text="Description for the course provided by the Instructor")
+                             help_text="Description for the course provided by the Instructor", 
+                             null=True)
     reg_provided_description = models.TextField(verbose_name='Registrar Provided Description',
-                                    help_text="Description (text) provided by registrar")
+                                    help_text="Description (text) provided by registrar",
+                                    null=True)
   
     FALL = 'FA'
     SPRING = 'SP'
