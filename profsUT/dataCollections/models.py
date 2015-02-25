@@ -47,13 +47,13 @@ class Course(models.Model):
 class CourseTime(models.Model):
     course = models.ForeignKey('Course')
 
-    monday = models.BooleanField(verbose_name='Monday', default=False)
-    tuesday = models.BooleanField(verbose_name='Tuesday', default=False)
-    wednesday = models.BooleanField(verbose_name='Wednesday', default=False)
-    thursday = models.BooleanField(verbose_name='Thursday', default=False)
-    friday = models.BooleanField(verbose_name='Friday', default=False)
-    saturday = models.BooleanField(verbose_name='Saturday', default=False)
-    sunday = models.BooleanField(verbose_name='Sunday', default=False)
+    m = models.BooleanField(verbose_name='Monday', default=False)
+    t = models.BooleanField(verbose_name='Tuesday', default=False)
+    w = models.BooleanField(verbose_name='Wednesday', default=False)
+    th = models.BooleanField(verbose_name='Thursday', default=False)
+    f = models.BooleanField(verbose_name='Friday', default=False)
+    s = models.BooleanField(verbose_name='Saturday', default=False)
+    su = models.BooleanField(verbose_name='Sunday', default=False)
 
     time = models.TimeField(verbose_name='Course Time')
 
