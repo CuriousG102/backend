@@ -1,0 +1,15 @@
+<h1>Response Form for Professors</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'dataCollections:submit' instructor.id %}" method="post">
+{% csrf_token %}
+<!-- {% for choice in poll.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %} -->
+<textarea name="question">Enter question here...</textarea>
+<textarea name="instructor">Enter instructor name here...</textarea>
+<textarea name="response">Enter text here...</textarea>
+<input type="submit" value="Add" />
+</form>
