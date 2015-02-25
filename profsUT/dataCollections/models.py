@@ -55,7 +55,8 @@ class CourseTime(models.Model):
     s = models.BooleanField(verbose_name='Saturday', default=False)
     su = models.BooleanField(verbose_name='Sunday', default=False)
 
-    time = models.TimeField(verbose_name='Course Time')
+    time = models.TimeField(verbose_name='Course Begin Time')
+    endTime = models.TimeField(verbose_name='Course End Time')
 
 class Question(models.Model):
     text = models.TextField(verbose_name="Question text")
