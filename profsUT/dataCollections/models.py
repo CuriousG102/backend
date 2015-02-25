@@ -11,6 +11,7 @@ class Instructor(models.Model):
                            null=True)
 
 class Course(models.Model):
+    courseName = models.CharField(max_length=50)
     uniqueNo = models.IntegerField(verbose_name="Course Unique Number")
 
     #only PDFs will be allowed
