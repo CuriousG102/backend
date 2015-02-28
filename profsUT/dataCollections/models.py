@@ -9,6 +9,7 @@ class Instructor(models.Model):
     first = models.CharField(max_length=50)
     bio = models.TextField(verbose_name='Short biography of the professor', 
                            null=True)
+    profile_photo = models.ImageField(upload_to='profile_pics', null=True)
 
     def __unicode__(self):
         return self.first + " " + self.last
