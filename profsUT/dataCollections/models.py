@@ -16,7 +16,7 @@ class Instructor(models.Model):
 class Course(models.Model):
     courseID = models.CharField(max_length=15)
     courseName = models.CharField(max_length=50)
-    uniqueNo = models.IntegerField(verbose_name="Course Unique Number")
+    uniqueNo = models.CharField(max_length=10, verbose_name="Course Unique Number")
 
     #only PDFs will be allowed
     syllabus = models.FileField(upload_to='syllabi', null=True)
