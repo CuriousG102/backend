@@ -14,6 +14,7 @@ class Instructor(models.Model):
         return self.first + " " + self.last
 
 class Course(models.Model):
+    courseID = models.CharField(max_length=15)
     courseName = models.CharField(max_length=50)
     uniqueNo = models.IntegerField(verbose_name="Course Unique Number")
 
