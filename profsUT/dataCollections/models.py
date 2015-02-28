@@ -80,5 +80,5 @@ class Response(models.Model):
     text = models.TextField(verbose_name="Response text")
 
     def __unicode__(self):
-        return self.instructor + "- " + self.question.text + ": " + self.text
+        return str(self.instructor) + "- " + self.question.text + ": " + self.text
 
