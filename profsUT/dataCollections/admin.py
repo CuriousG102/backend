@@ -26,7 +26,7 @@ class ResponseInline(NestedStackedInline):
 
 class InstructorAdmin(NestedModelAdmin):
 	fieldsets = [
-		(None, {'fields': ['last', 'first']})
+		(None, {'fields': ['last', 'first', 'profile_photo']})
 	]
 	inlines = [
 		CourseInline,
