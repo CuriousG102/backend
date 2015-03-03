@@ -1,17 +1,8 @@
 <h1>{{ instructor.first }} {{ instructor.last }}</h1>
 
-<form action="{% url 'dataCollections:submit' instructor.id %}" method="post">
-{% csrf_token %}
-<!-- {% for choice in poll.choice_set.all %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
-{% endfor %} -->
-<input name="question" placeholder="Enter question here"></input>
-<br>
-<input name="instructor" placeholder="Enter instructor name here"></input>
-<br>
-<textarea name="response"></textarea>
-<input type="submit" value="Submit" />
+<form action="/profsUT/view/{{ instructor.id }}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
 </form>
 
-<!-- <a href="{% url 'dataCollections:submit' instructor.id %}">Vote again?</a> -->
