@@ -1,0 +1,78 @@
+ZAC IOANNIDIS
+izac.us | zacioannidis@gmail.com | +1 (484) 752-0820
+ 
+
+PREVIOUS
+
+Infographics.com
+---
+Software Engineer InternDeveloped an interactive visualization for the Boston Consulting Group as part of a small team. Worked with D3, AngularJS, Node.js, and MongoDB.
+ 
+University of Bristol
+---
+Web Developer
+Created an interactive data visualization framework enabling collaboration on large datasets in the cloud and subsequent analysis of data.
+
+Children’s Hospital of Philadelphia
+---
+
+NAPCore Facilities Intern
+Performed phylogenetic analysis of the mitochondrial DNA of a group of feline species in order to determine the evolutionary path of the Snow Leopard. 
+
+
+EDUCATION
+
+University of Texas at Austin, USA — 2014-2015
+---
+Computer Science Major — Current GPA: 4.0
+Relevant Coursework: Computer Graphics, Principles of Interaction Design, Data Science, Big Data Programming, Mobile News App Design, Introduction to Data Mining
+
+University of Bristol, UK — 2012-2016
+---
+Integrated MEng in Computer Science with Year Abroad — Average: Upper Second Class Honours (3.7 GPA)
+Relevant Coursework: Software Engineering, Data Mining, Databases, Algorithms
+
+
+SKILLS
+
+fresh and adept: Javascript, AngularJS, Node.js, Processing, Java, Hadoop, SQL, Maya, Adobe After Eﬀects, Final Cut Pro X
+
+rusty but experienced: D3, Matlab, R, Haskell, Python, C
+
+
+PROJECTS
+
+tabletalk.io (ongoing)
+---
+Designed and developed a revamped website for the magazine, which will enable users to read articles from the print version online. The back end features e-commerce, an annotation system for the articles and is built on top of a CMS (KeystoneJS). 
+Expected launch date: Feb. 2015.
+
+
+Project Rainhawk
+---
+A data visualization platform enabling cloud collaboration built as part of a software engineering group project. The web application allows users to upload datasets, set permissions and modify them, and eventually visualize them in order to ﬁnd trends and patterns.
+
+
+Medicare Data Analysis (Data Science — University of Texas at Austin)
+---
+Analysis and predictive modelling of open Medicare datasets using R, Tableau, and Oracle Data Miner.
+
+
+Breakout (Object-Oriented Programming — University of Bristol)
+---
+Developed a clone of the famous Atari game, released in 1976. Written in Java using the Swing GUI library.
+
+
+CAMLE (Language Engineering — University of Bristol)
+---
+Compiler for a procedural language written in Java.
+
+
+ARM THUMB ISA (Computer Architecture — University of Bristol)
+---
+ARM processor emulator written in Verilog.
+
+
+INTERESTS
+
+Outside of school, I am fascinated by the intersection of technology and art through the context of creative coding. I enjoy programming generative artworks and exploring alternative methods of interfacing users’ actions with the software. Furthermore I am currently in the process of directing a short movie and composing the accompanying music.
