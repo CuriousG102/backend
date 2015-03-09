@@ -39,7 +39,15 @@ INSTALLED_APPS = (
     'dataCollections',
     'bootstrapform',
     'nested_inline'
+    'rest_framework',
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'PAGINATE_BY': 10,
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

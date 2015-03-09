@@ -9,7 +9,7 @@ class Instructor(models.Model):
     first = models.CharField(max_length=50)
     bio = models.TextField(verbose_name='Short biography of the professor', 
                            null=True)
-    profile_photo = models.ImageField(upload_to='profile_pics', null=True)
+    profile_photo = models.ImageField(upload_to='profile_pics', null=True, blank=True)
 
     def __unicode__(self):
         return self.first + " " + self.last
@@ -20,15 +20,15 @@ class Course(models.Model):
     uniqueNo = models.CharField(max_length=10, verbose_name="Course Unique Number")
 
     #only PDFs will be allowed
-    syllabus = models.FileField(upload_to='syllabi', null=True)
+    syllabus = models.FileField(upload_to='syllabi', null=True, blank=True)
                                   
-    instructor = models.ForeignKey('Instructor')
+    instructor = models.ForeignKey('Instructor', related_name='courses')
     inst_provided_description = models.TextField(verbose_name='Instructor Provided Description',
                              help_text="Description for the course provided by the Instructor", 
-                             null=True)
+                             null=True, blank=True)
     reg_provided_description = models.TextField(verbose_name='Registrar Provided Description',
                                     help_text="Description (text) provided by registrar",
-                                    null=True)
+                                    null=True, blank=True)
   
     FALL = 'FA'
     SPRING = 'SP'
@@ -53,7 +53,7 @@ class Course(models.Model):
         return self.courseName
 
 class CourseTime(models.Model):
-    course = models.ForeignKey('Course')
+    course = models.ForeignKey('Course', related_name='times')
 
     m = models.BooleanField(verbose_name='Monday', default=False)
     t = models.BooleanField(verbose_name='Tuesday', default=False)
@@ -76,8 +76,8 @@ class Question(models.Model):
         return self.text
 
 class Response(models.Model):
-    question = models.ForeignKey(Question)
-    instructor = models.ForeignKey(Instructor)
+    question = models.ForeignKey(Question, related_name='responses')
+    instructor = models.ForeignKey(Instructor, related_name='responses')
     text = models.TextField(verbose_name="Response text")
 
     def __unicode__(self):

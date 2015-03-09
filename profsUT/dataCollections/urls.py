@@ -1,10 +1,12 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-import views
+from dataCollections import views
 
 
 urlpatterns = patterns('',
     url(r'^view/(?P<teacher_id>\d+)$', views.instructorView, name='profView'),
     url(r'^thankyou/', views.thankYou, name='thankYou'),
-    url(r'^$', views.home, name='home'),
+    url(r'^api/instructors/$', views.InstructorList.as_view()),
+	url(r'^api/instructors/(?P<pk>[0-9]+)/$', views.InstructorDetail.as_view()),
+	url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CourseDetail.as_view()),
 )
