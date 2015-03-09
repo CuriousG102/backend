@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'dataCollections',
     'bootstrapform',
-    'nested_inline'
+    'nested_inline',
     'rest_framework',
 )
 

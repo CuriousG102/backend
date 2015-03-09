@@ -73,4 +73,3 @@ class InstructorDetail(generics.RetrieveAPIView):
 class CourseDetail(generics.RetrieveAPIView):
 	queryset = Course.objects.all()
 	serializer_class = CourseSerializer
->>>>>>> RESTful_API
