@@ -2,6 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from dataCollections import urls
 
+import settings
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'profsUT.views.home', name='home'),
@@ -9,3 +11,6 @@ urlpatterns = patterns('',
     url(r'^profsUT/', include('dataCollections.urls', namespace="dataCollections")),
     url(r'^admin/', include(admin.site.urls)),
 )
+if settings.DEBUG:
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    urlpatterns += staticfiles_urlpatterns()
