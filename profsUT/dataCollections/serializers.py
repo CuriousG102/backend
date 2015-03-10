@@ -1,6 +1,11 @@
 from rest_framework import serializers
 from dataCollections.models import Instructor, Course, CourseTime, Question, Response
 
+class CourseSnippetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = ('id', 'courseID', 'courseName')    
+
 class ResponseSerializer(serializers.ModelSerializer):
     question = serializers.ReadOnlyField(source='question.text')
     class Meta:
@@ -8,7 +13,7 @@ class ResponseSerializer(serializers.ModelSerializer):
         fields = ('text', 'question')
 
 class InstructorListSerializer(serializers.ModelSerializer):
-    courses = serializers.PrimaryKeyRelatedField(many = True, read_only=True)
+    courses = CourseSnippetSerializer(many = True, read_only=True)
     # profile_photo = serializers.ReadOnlyField(source='profile_photo')
 
     class Meta:
