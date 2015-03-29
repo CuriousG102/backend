@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'bootstrapform',
     'nested_inline',
     'rest_framework',
+    'storages',
 )
 
 REST_FRAMEWORK = {
@@ -75,17 +76,46 @@ if False:
         }
     }
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'mydb',                      # Or path to database file if using sqlite3.
-            # The following settings are not used with sqlite3:
-            'USER': 'myuser',
-            'PASSWORD': 'password',
-            'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-            'PORT': '',                      # Set to empty string for default.
+    if 'RDS_DB_NAME' in os.environ:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': os.environ['RDS_DB_NAME'],
+                'USER': os.environ['RDS_USERNAME'],
+                'PASSWORD': os.environ['RDS_PASSWORD'],
+                'HOST': os.environ['RDS_HOSTNAME'],
+                'PORT': os.environ['RDS_PORT'],
+            }
         }
-    }
+        AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
+        AWS_ACCESS_KEY_ID = os.environ['S3_ACCESS_KEY_ID']
+        AWS_SECRET_ACCESS_KEY = os.environ['S3_SECRET_ACCESS_KEY']
+
+        # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
+        # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
+        # This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
+        # We also use it in the next setting.
+        AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+        # This is used by the `static` template tag from `static`, if you're using that. Or if anything else
+        # refers directly to STATIC_URL. So it's safest to always set it.
+        STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+        # Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
+        # you run `collectstatic`).
+        STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+                'NAME': 'mydb',                      # Or path to database file if using sqlite3.
+                # The following settings are not used with sqlite3:
+                'USER': 'myuser',
+                'PASSWORD': 'password',
+                'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
+                'PORT': '',                      # Set to empty string for default.
+            }
+        }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

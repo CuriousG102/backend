@@ -1,9 +1,11 @@
 awsebcli==3.1.4
+boto==2.36.0
 cement==2.4.0
 Django==1.7.5
 django-bootstrap-form==3.1
 django-filter==0.9.2
 django-nested-inline==0.3.4
+django-storages==1.1.8
 djangorestframework==3.0.5
 jmespath==0.6.1
 Markdown==2.6
