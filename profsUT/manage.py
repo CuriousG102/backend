@@ -7,6 +7,7 @@ if __name__ == "__main__":
 
     from django.core.management import execute_from_command_line
 
-    print "POODLES" + sys.path
-
-    execute_from_command_line(sys.argv)
+    try:
+        execute_from_command_line(sys.argv)
+    except:
+        raise Exception("POODLES" + sys.path)
