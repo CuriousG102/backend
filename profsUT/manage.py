@@ -9,5 +9,5 @@ if __name__ == "__main__":
 
     try:
         execute_from_command_line(sys.argv)
-    except:
+    except ImportError:
         raise Exception("POODLES" + sys.path)
