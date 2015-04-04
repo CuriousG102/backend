@@ -76,6 +76,7 @@ if DEBUG:
         }
     }
     STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 else:
     if 'RDS_DB_NAME' in os.environ:
