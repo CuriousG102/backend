@@ -20,6 +20,10 @@ RUN pip install -r requirements.txt
 
 RUN mkdir /var/eb_log
 
+RUN python profsUT/manage.py collectstatic
+
+RUN python profsUT/manage.py migrate
+
 CMD ["gunicorn", "-c gunicorn_config.py", "profsUT.wsgi", "--access-logfile /var/eb_log/gunicorn_log"]
 
 EXPOSE 8001
