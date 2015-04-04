@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        if not User.objects.filter(username=os.environ("DEFAULT_ADMIN")).exists():
-            User.objects.create_superuser(os.environ("DEFAULT_ADMIN_USER"), 
+        if not User.objects.filter(username=os.environ["DEFAULT_ADMIN"]).exists():
+            User.objects.create_superuser(os.environ["DEFAULT_ADMIN_USER"], 
                                           "profsut@gmail.com", 
-                                          os.environ("DEFAULT_ADMIN_PASS"))
+                                          os.environ["DEFAULT_ADMIN_PASS"])
