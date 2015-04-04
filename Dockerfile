@@ -14,6 +14,8 @@ RUN git clone $GIT_PATH /opt/site
 
 RUN cd /opt/site
 
+RUN git checkout dockerize
+
 RUN pip install -r requirements.txt
 
 RUN mkdir /var/eb_log
