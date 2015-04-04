@@ -69,6 +69,7 @@ WSGI_APPLICATION = 'profsUT.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 if DEBUG:
+    PROJECT_DIR = os.environ['PROJECT_DIR']
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
