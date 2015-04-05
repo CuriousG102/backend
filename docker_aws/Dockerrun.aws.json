@@ -1,4 +1,13 @@
 {
     "AWSEBDockerrunVersion": "1", 
+    "Image": {
+        "Name": "curiousg102/profsut_django",
+        "Update": "true"
+    },
+    "Ports": [
+        {
+            "ContainerPort": "8001"
+        }
+    ],
     "Logging": "/var/eb_log"
 }
