@@ -5,25 +5,23 @@ MAINTAINER Miles Hutson
 RUN apt-get update -y
 
 RUN apt-get install -y  git\
-                        python-dev
+                        python-dev\
                         python-setuptools
 
 RUN easy_install pip
 
 RUN git clone $GIT_PATH /opt/site
 
-RUN cd /opt/site
-
-RUN git checkout dockerize
-
-RUN pip install -r requirements.txt
+RUN cd /opt/site && git checkout dockerize && pip install -r requirements.txt
 
 RUN mkdir /var/eb_log
 
-RUN python profsUT/manage.py collectstatic
+ENV PROJECT_DIR /opt/site
 
-RUN python profsUT/manage.py migrate
+RUN cd /opt/site && python profsUT/manage.py collectstatic --noinput\
+                 && python profsUT/manage.py migrate --noinput\
+                 && python profsUT/manage.py createsu
 
-CMD ["gunicorn", "-c gunicorn_config.py", "profsUT.wsgi", "--access-logfile /var/eb_log/gunicorn_log"]
+CMD gunicorn -c /opt/site/gunicorn_config.py profsUT.wsgi --access-logfile /var/eb_log/gunicorn_log
 
 EXPOSE 8001
