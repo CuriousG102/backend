@@ -69,7 +69,6 @@ WSGI_APPLICATION = 'profsUT.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 if DEBUG:
-    PROJECT_DIR = os.environ['PROJECT_DIR']
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -78,6 +77,9 @@ if DEBUG:
     }
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 
 else:
     if 'RDS_DB_NAME' in os.environ:
@@ -107,28 +109,16 @@ else:
 
         # Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
         # you run `collectstatic`).
-        import custom_storages
-
-        STATICFILES_STORAGE = custom_storages.StaticStorage
+        STATICFILES_STORAGE = 's3_storages.custom_storages.StaticStorage'
 
         STATICFILES_LOCATION = 'static'
         STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
         MEDIAFILES_LOCATION = 'media'
         MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-        DEFAULT_FILE_STORAGE = custom_storages.MediaStorage
+        DEFAULT_FILE_STORAGE = 's3_storages.custom_storages.MediaStorage'
     else:
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-                'NAME': 'mydb',                      # Or path to database file if using sqlite3.
-                # The following settings are not used with sqlite3:
-                'USER': 'myuser',
-                'PASSWORD': 'password',
-                'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-                'PORT': '',                      # Set to empty string for default.
-            }
-        }
+        raise Exception("You don't have a database dummy")
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

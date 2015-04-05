@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+
+
 from dataCollections import urls
 
 import settings
@@ -14,5 +16,7 @@ urlpatterns = patterns('',
    							   namespace='rest_framework')),
 )
 if settings.DEBUG:
+    from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
     urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
