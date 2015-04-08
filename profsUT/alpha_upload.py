@@ -87,3 +87,5 @@ def csvToDatabase(inFileName):
                                                         f = FBool,
                                                         s = SBool,
                                                         su = SuBool)
+
+if __name__ == '__main__': main()
