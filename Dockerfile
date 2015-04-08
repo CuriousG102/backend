@@ -4,8 +4,7 @@ MAINTAINER Miles Hutson
 
 RUN apt-get update -y
 
-RUN apt-get install -y  git\
-                        python-dev\
+RUN apt-get install -y  python-dev\
                         python-setuptools\
                         libpq-dev
 
