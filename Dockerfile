@@ -18,8 +18,6 @@ RUN mkdir /var/eb_log
 
 ENV PROJECT_DIR /opt/site/djangoProfs
 
-ENV VIDEOS_ZENCODER_KEY amazon_is_dumb
-
 CMD cd /opt/site && python profsUT/manage.py collectstatic --noinput\
                  && python profsUT/manage.py migrate --noinput\
                  && python profsUT/manage.py createsu\
