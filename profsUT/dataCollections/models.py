@@ -10,6 +10,7 @@ class Instructor(models.Model):
     bio = models.TextField(verbose_name='Short biography of the professor', 
                            null=True)
     profile_photo = models.ImageField(upload_to='profile_pics', null=True, blank=True)
+    video = models.FileField(upload_to='videos', null=True, blank=True)
 
     def __unicode__(self):
         return self.first + " " + self.last
