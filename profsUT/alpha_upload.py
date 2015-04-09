@@ -6,6 +6,8 @@ from dataCollections.models import Instructor, Course, CourseTime
 from datetime import time
 
 def main():
+    import django
+    django.setup()
     inFileName = raw_input("What is the path to the xlsx?: ")
     csvToDatabase(inFileName)
     inFile.close()
