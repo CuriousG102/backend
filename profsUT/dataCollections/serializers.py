@@ -7,9 +7,13 @@ class ResponseSerializer(serializers.ModelSerializer):
         model = Response
         fields = ('text', 'question')
 
+class CourseLessDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = ('id', 'courseID', 'courseName', 'semesterYear')
+
 class InstructorListSerializer(serializers.ModelSerializer):
-    courses = serializers.PrimaryKeyRelatedField(many = True, read_only=True)
-    # profile_photo = serializers.ReadOnlyField(source='profile_photo')
+    courses = CourseLessDetailSerializer(many = True, read_only=True)
 
     class Meta:
         model = Instructor
