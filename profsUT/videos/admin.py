@@ -5,12 +5,12 @@ from django.contrib import messages
 
 from models import *
 
-import settings
+import profsUT.settings
 
 from heywatch import job
 
 # Register your models here.
-class VideoAdmin(models.ModelAdmin):
+class VideoAdmin(admin.ModelAdmin):
     actions = ('transcode',)
     # include = ('instructor', 'video_master',)
 
