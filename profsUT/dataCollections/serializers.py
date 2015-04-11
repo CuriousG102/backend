@@ -10,7 +10,15 @@ class ResponseSerializer(serializers.ModelSerializer):
 class CourseLessDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ('id', 'courseID', 'courseName', 'semesterYear')
+        fields = ('id', 'courseID', 'courseName', 'semesterYear', 
+                  'semesterSeason')
+
+class CourseListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        depth = 1
+        fields = ('id', 'courseID', 'courseName', 'semesterYear',
+                  'semesterSeason', 'instructor')
 
 class InstructorListSerializer(serializers.ModelSerializer):
     courses = CourseLessDetailSerializer(many = True, read_only=True)
@@ -37,6 +45,7 @@ class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Course
+        depth = 1
         fields = ('courseID', 'courseName', 'uniqueNo',
                   'syllabus', 'instructor', 'inst_provided_description',
                   'reg_provided_description', 'semesterSeason', 
