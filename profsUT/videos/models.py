@@ -7,6 +7,8 @@ class Video(models.Model):
     video_transcoded = models.BooleanField()
     video_transcoding = models.BooleanField()
     transcode_job_id = models.IntegerField(null=True, blank=True)
+    video_url = models.URLField(null=True, blank=True)
+    video_thumbnail_url = models.URLField(null=True, blank=True)
 
     def __unicode__(self):
         return "Instructor %s Video %s" % instructor, video_master.name

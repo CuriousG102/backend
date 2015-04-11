@@ -12,7 +12,7 @@ from heywatch import job
 # Register your models here.
 class VideoAdmin(models.ModelAdmin):
     actions = ('transcode',)
-    exclude = ('video_transcoded', 'video_transcoding', 'transcode_job_id',)
+    # include = ('instructor', 'video_master',)
 
     def transcode(self, request, queryset):
         for video in queryset:
