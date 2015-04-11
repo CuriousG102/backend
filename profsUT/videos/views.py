@@ -10,7 +10,7 @@ import logging
 logger = logging.getLogger(__name__)
 # Create your views here.
 
-@require_POST()
+@require_POST
 def heyWatchPost(request, transcode_id):
     video = Videos.object.get(transcode_job_id=transcode_id)
     response = json.loads(request.body)
