@@ -58,7 +58,7 @@ class VideoAdmin(admin.ModelAdmin):
             heywatch_conf = "\n".join(heywatch_conf)
             
             try:
-                response = job.submit(heywatch_conf)
+                response = job.submit(heywatch_conf, api_key=settings.VIDEOS_ZENCODER_KEY)
             except:
                 trace = traceback.format_exc()
                 messages.error(request, "Exception encountered while submitting the video for processing: %s" % trace)
