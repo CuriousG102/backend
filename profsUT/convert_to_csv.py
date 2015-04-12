@@ -1,5 +1,5 @@
 import csv
-import re
+import re 
 
 def main():
     inFileName = raw_input("What is the path to the file to be converted?: ")
