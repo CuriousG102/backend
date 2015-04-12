@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 
 from models import *
+import views
 
 from profsUT import settings
 
@@ -41,7 +42,7 @@ class VideoAdmin(admin.ModelAdmin):
                                           video.video_master.url,
                                           )))
             heywatch_conf.append("".join(("set webhook = ",
-                                          request.build_absolute_uri(reverse('heyWatchHook')),
+                                          request.build_absolute_uri(reverse(views.heyWatchPost)),
                                           )))
             heywatch_conf.append("".join(("-> hls", 
                                           "$s3/hls/",
