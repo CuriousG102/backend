@@ -83,3 +83,6 @@ class Response(models.Model):
     def __unicode__(self):
         return str(self.instructor) + "- " + self.question.text + ": " + self.text
 
+class RawData(models.Model):
+    description = models.TextField()
+    spreadsheet = models.FileField(verbose_name="XLSX Spreadsheet")

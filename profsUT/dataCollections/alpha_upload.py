@@ -1,16 +1,12 @@
 import copytext
 import pytz
+import requests
 
 from dataCollections.models import Instructor, Course, CourseTime
+from profsUT import settings
 
 from datetime import time
-
-def main():
-    import django
-    django.setup()
-    inFileName = raw_input("What is the path to the xlsx?: ")
-    csvToDatabase(inFileName)
-    inFile.close()
+import os
 
 # known problems: 
 # - when a course time is changed, the new course time will be
@@ -18,8 +14,13 @@ def main():
 # - when a course is cancelled it will not be deleted from the database
 # - we are not taking cross listings into account
 # - we nwo have info on building and room number and we may want to use that
-def csvToDatabase(inFileName):
-    copy = copytext.Copy(inFileName)
+def tableToDatabase(inFileURL):
+    pathForFile = os.path.join(settings.BASE_DIR, 'csvToDatabaseTemp.csv')
+    r = requests.get(inFileURL)
+    with open(pathForFile, 'wb') as f:
+        f.write(r.content)
+
+    copy = copytext.Copy(pathForFile)
     sheet = copy['courses']
     for row in sheet:
         # we only want Journalism for now
@@ -90,4 +91,5 @@ def csvToDatabase(inFileName):
                                                         s = SBool,
                                                         su = SuBool)
 
-if __name__ == '__main__': main()
+
+    os.remove(pathForFile)

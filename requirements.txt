@@ -19,5 +19,6 @@ psycopg2==2.6.0
 python-dateutil==2.4.1
 pytz==2015.2
 PyYAML==3.11
+requests==2.6.0
 six==1.9.0
 zencoder==0.6.5

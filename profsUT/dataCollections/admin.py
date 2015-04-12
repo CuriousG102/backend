@@ -2,6 +2,8 @@ from django.contrib import admin
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 from dataCollections.models import *
 
+from alpha_upload import tableToDatabase
+
 # Register your models here.
 
 admin.site.register(Question)
@@ -44,3 +46,10 @@ class CourseTimeInline(admin.TabularInline):
 	model = CourseTime
 
 admin.site.register(Course, CourseAdmin)
+
+class RawDataAdmin(admin.ModelAdmin):
+	actions = ['db_upload']
+
+	def db_upload(self, request, queryset):
+		for table in queryset:
+			tableToDatabase(table.spreadsheet.url)
