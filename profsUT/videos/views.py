@@ -20,7 +20,7 @@ def heyWatchPost(request):
         video = Videos.object.get(transcode_job_id=int(response['id']))
         video.video_transcoding = False
         video.transcode_job_id = None
-        if 'errors' in response:
+        if len(response['errors']) != 0:
             logger.error('Error in response for video transcoding job of %s: %s' % (video.instructor, str(response)))
         else:
             video.video_thumbnail_url = respone['jpg_640x'][0]
