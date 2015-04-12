@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'nested_inline',
     'rest_framework',
     'storages',
+    'videos',
 )
 
 REST_FRAMEWORK = {

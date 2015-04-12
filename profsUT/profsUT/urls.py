@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api-auth/', include('rest_framework.urls',
    							   namespace='rest_framework')),
+    url(r'^videos/', include('videos.urls', namespace="videos"))
 )
 if settings.DEBUG:
     from django.conf.urls.static import static

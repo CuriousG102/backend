@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from dataCollections.models import Instructor, Course, CourseTime, Question, Response
+from videos.serializers import VideoSerializer
 
 class ResponseSerializer(serializers.ModelSerializer):
     question = serializers.ReadOnlyField(source='question.text')
@@ -29,10 +30,11 @@ class InstructorListSerializer(serializers.ModelSerializer):
 
 class InstructorDetailSerializer(InstructorListSerializer):
     responses = ResponseSerializer(many = True, read_only=True)
+    video = VideoSerializer(read_only=True)
 
     class Meta:
         model = Instructor
-        fields = ('id', 'last', 'first', 'courses', 'profile_photo', 'bio', 'responses')
+        fields = ('id', 'last', 'first', 'courses', 'profile_photo', 'bio', 'responses', 'video')
 
 class CourseTimeSerializer(serializers.ModelSerializer):
     class Meta:
