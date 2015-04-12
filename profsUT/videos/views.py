@@ -22,6 +22,6 @@ def heyWatchPost(request, transcode_id):
         video.video_thumbnail_url = respone['jpg_640x']
         video.video_url = response['hls']
         video.video_transcoded = True
-        logger.info('Success for video transcoding job of %s: %s' % video.instructor, str(response))
+        logger.info('Success for video transcoding job of %s: %s' % (video.instructor, str(response)))
     
     video.save()
