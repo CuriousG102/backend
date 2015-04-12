@@ -2,9 +2,10 @@ import json
 import os
 import httplib2
 
-USER_AGENT = 'HeyWatch/2.0.0 (Python)'
+
 
 def submit(config_content, **kwargs):
+  USER_AGENT = 'HeyWatch/2.0.0 (Python)'
   heywatch_url = 'https://heywatch.com'
 
   if 'api_key' in kwargs:
