@@ -44,12 +44,12 @@ class VideoAdmin(admin.ModelAdmin):
             heywatch_conf.append("".join(("set webhook = ",
                                           request.build_absolute_uri(reverse('videos:heyWatchHook')),
                                           )))
-            heywatch_conf.append("".join(("-> hls", 
+            heywatch_conf.append("".join(("-> hls = ", 
                                           "$s3/hls/",
                                           str(video.id),
                                           ".m3u8"
                                           )))
-            heywatch_conf.append("".join(("-> jpg_640x",
+            heywatch_conf.append("".join(("-> jpg_640x = ",
                                           "$s3/thumbnail/large/",
                                           str(video.id),
                                           ".jpg"
