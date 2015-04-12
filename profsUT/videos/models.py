@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Video(models.Model):
-    instructor = models.ForeignKey('dataCollections.Instructor')
+    instructor = models.ForeignKey('dataCollections.Instructor', related_name='video')
     video_master = models.FileField(upload_to='master_videos')
     video_transcoded = models.BooleanField(default=False)
     video_transcoding = models.BooleanField(default=False)
