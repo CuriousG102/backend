@@ -46,7 +46,7 @@ class VideoAdmin(admin.ModelAdmin):
                                           )))
             heywatch_conf.append("".join(("-> hls", 
                                           "$s3/hls/",
-                                          video.id,
+                                          str(video.id),
                                           ".m3u8"
                                           )))
             heywatch_conf.append("".join(("-> jpg_640x",
