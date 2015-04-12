@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
 
 from models import Video
 
@@ -11,6 +12,7 @@ import traceback
 logger = logging.getLogger(__name__)
 # Create your views here.
 
+@csrf_exempt
 @require_POST
 def heyWatchPost(request):
     try:
