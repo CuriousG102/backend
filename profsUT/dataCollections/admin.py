@@ -53,3 +53,5 @@ class RawDataAdmin(admin.ModelAdmin):
 	def db_upload(self, request, queryset):
 		for table in queryset:
 			tableToDatabase(table.spreadsheet.url)
+
+admin.site.register(RawData, RawDataAdmin)
