@@ -23,8 +23,8 @@ def heyWatchPost(request):
         if len(response['errors']) != 0:
             logger.error('Error in response for video transcoding job of %s: %s' % (video.instructor, str(response)))
         else:
-            video.video_thumbnail_url = respone['jpg_640x'][0]
-            video.video_url = response['hls']
+            video.video_thumbnail_url = response['output_urls']['jpg_640x'][0]
+            video.video_url = response['output_urls']['hls']
             video.video_transcoded = True
             logger.info('Success for video transcoding job of %s: %s' % (video.instructor, str(response)))
         
