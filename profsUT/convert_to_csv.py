@@ -50,7 +50,7 @@ def convertToCSV(inFile, outFile):
                 print columnReference
                 raise
         try:
-            rowToWrite.append(row[lastColumn[1]:row.find('#')])
+            rowToWrite.append(row[lastColumn[1]:row.find('#')].strip())
             sheetWriter.writerow(rowToWrite)
         except:
             print lineNo
