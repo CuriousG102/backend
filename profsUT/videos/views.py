@@ -32,4 +32,5 @@ def heyWatchPost(request):
         video.save()
     except:
         logger.error('Everything sucks, and your heywatchpost has an uncaught exception: %s' % traceback.format_exc())
+        raise
     return HttpResponse("")

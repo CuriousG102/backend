@@ -4,7 +4,11 @@ from dataCollections.models import *
 
 from alpha_upload import tableToDatabase
 
+import logging
+
 # Register your models here.
+
+logger = logging.getLogger(__name__)
 
 admin.site.register(Question)
 
@@ -53,5 +57,6 @@ class RawDataAdmin(admin.ModelAdmin):
 	def db_upload(self, request, queryset):
 		for table in queryset:
 			tableToDatabase(table.spreadsheet.url)
+
 
 admin.site.register(RawData, RawDataAdmin)
