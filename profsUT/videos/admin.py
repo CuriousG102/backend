@@ -51,7 +51,7 @@ class VideoAdmin(admin.ModelAdmin):
                                           )))
             heywatch_conf.append("".join(("-> jpg_640x",
                                           "$s3/thumbnail/large/",
-                                          video.id,
+                                          str(video.id),
                                           ".jpg"
                                           )))
 
