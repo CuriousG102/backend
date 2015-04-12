@@ -5,7 +5,7 @@ from django.contrib import messages
 
 from models import *
 
-import profsUT.settings
+from profsUT import settings
 
 from heywatch import job
 
