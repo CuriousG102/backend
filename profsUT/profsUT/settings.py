@@ -46,9 +46,14 @@ INSTALLED_APPS = (
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        'permissions.permissions.ReadOnly',
     ),
-    'PAGINATE_BY': 10,
+
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework_jsonp.renderers.JSONPRenderer',
+    ),
 }
 
 MIDDLEWARE_CLASSES = (
@@ -139,12 +144,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'permissions.permissions.ReadOnly',
-    )
-}
 
 LOGGING = {
     'version': 1,
