@@ -5,7 +5,7 @@ import httplib2
 USER_AGENT = 'HeyWatch/2.0.0 (Python)'
 
 def submit(config_content, **kwargs):
-  heywatch_url = os.getenv('HEYWATCH_URL', 'https://heywatch.com')
+  heywatch_url = 'https://heywatch.com'
 
   if 'api_key' in kwargs:
     api_key = kwargs['api_key']
