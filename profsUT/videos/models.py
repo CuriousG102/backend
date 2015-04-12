@@ -11,4 +11,4 @@ class Video(models.Model):
     video_thumbnail_url = models.URLField(null=True, blank=True)
 
     def __unicode__(self):
-        return "Instructor %s Video %s" % instructor, video_master.name
+        return "Instructor %s Video %s" % self.instructor, self.video_master.name
