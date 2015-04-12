@@ -42,7 +42,7 @@ class VideoAdmin(admin.ModelAdmin):
                                           video.video_master.url,
                                           )))
             heywatch_conf.append("".join(("set webhook = ",
-                                          request.build_absolute_uri(reverse(views.heyWatchPost)),
+                                          request.build_absolute_uri(reverse('videos:heyWatchHook')),
                                           )))
             heywatch_conf.append("".join(("-> hls", 
                                           "$s3/hls/",
