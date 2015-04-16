@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '6^klb956%pm_2lhg$j%242&-cbq&c)abska6@hdg-yc+@t(7&@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'profsUT.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-if False:
+if DEBUG:
     PROJECT_DIR = os.environ['PROJECT_DIR']
 
     DATABASES = {
