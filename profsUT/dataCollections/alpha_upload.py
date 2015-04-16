@@ -78,16 +78,16 @@ def tableToDatabase(inFileURL):
             MBool = True
             dayStringNeeded = dayStringNeeded[:-1]
 
-        courseTime, created = CourseTime.objects.create(course = course,
-                                                        time  = startTime,
-                                                        endTime  = endTime,
-                                                        m = MBool,
-                                                        t = TBool,
-                                                        w = WBool,
-                                                        th = ThBool,
-                                                        f = FBool,
-                                                        s = SBool,
-                                                        su = SuBool)
+        CourseTime.objects.create(course = course,
+                                  time  = startTime,
+                                  endTime  = endTime,
+                                  m = MBool,
+                                  t = TBool,
+                                  w = WBool,
+                                  th = ThBool,
+                                  f = FBool,
+                                  s = SBool,
+                                  su = SuBool)
 
 
     os.remove(pathForFile)
