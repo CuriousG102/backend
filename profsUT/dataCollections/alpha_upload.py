@@ -1,5 +1,4 @@
 import copytext
-import pytz
 import requests
 
 from dataCollections.models import Instructor, Course, CourseTime
@@ -50,10 +49,9 @@ def tableToDatabase(inFileURL):
                                                'courseID': ' '.join((row['Dept'], row['Course Nbr'])),
                                                'uniqueNo': row['Unique'],
                                                'instructor': instructor})
-        timezone = pytz.timezone('US/Central')
 
-        startTime = timezone.localize(datetime.strptime(row['From'], '%H%M')).timetz()
-        endTime = timezone.localize(datetime.strptime(row['To'], '%H%M')).timetz()
+        startTime = datetime.strptime(row['From'], '%H%M').time()
+        endTime = datetime.strptime(row['To'], '%H%M').time()
 
         dayStringNeeded = row['Days']
         SuBool, SBool, FBool, ThBool, WBool, TBool, MBool = False, False, False, False, False, False, False
