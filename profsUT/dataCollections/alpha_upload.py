@@ -81,8 +81,8 @@ def tableToDatabase(inFileURL):
             dayStringNeeded = dayStringNeeded[:-1]
 
         courseTime, created = CourseTime.objects.create(course = course,
-                                                        time  = timeObjBegin,
-                                                        endTime  = timeObjEnd,
+                                                        time  = startTime,
+                                                        endTime  = endTime,
                                                         m = MBool,
                                                         t = TBool,
                                                         w = WBool,
