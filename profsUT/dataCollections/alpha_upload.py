@@ -52,8 +52,8 @@ def tableToDatabase(inFileURL):
                                                'instructor': instructor})
         timezone = pytz.timezone('US/Central')
 
-        startTime = timezone.localize(datetime.strptime(row['From'], '%H%M').time())
-        endTime = timezone.localize(datetime.strptime(row['To'], '%H%M').time())
+        startTime = timezone.localize(datetime.strptime(row['From'], '%H%M')).timetz()
+        endTime = timezone.localize(datetime.strptime(row['To'], '%H%M')).timetz()
 
         dayStringNeeded = row['Days']
         SuBool, SBool, FBool, ThBool, WBool, TBool, MBool = False, False, False, False, False, False, False
