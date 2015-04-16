@@ -8,7 +8,6 @@ from datetime import time
 def main():
     inFileName = raw_input("What is the path to the xlsx?: ")
     csvToDatabase(inFileName)
-    inFile.close()
 
 # known problems: 
 # - when a course time is changed, the new course time will be
