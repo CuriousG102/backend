@@ -23,10 +23,8 @@ def tableToDatabase(inFileURL):
     sheet = copy['courses']
     for row in sheet:
         # we only want Journalism for now
+        # & we don't currently have a use for courses without instructors
         if row['Dept'] != 'J' or len(row['Instructor']) == 0: continue 
-
-        # We don't currently have a use for courses without instructors
-        if len(row['Instructor']) == 0: continue
 
         instructorLastName = row['Instructor'].split(', ')[0]
         instructorFirstName = row['Instructor'].split(', ')[1]
@@ -49,45 +47,45 @@ def tableToDatabase(inFileURL):
                                                'courseID': ' '.join((row['Dept'], row['Course Nbr'])),
                                                'uniqueNo': row['Unique'],
                                                'instructor': instructor})
+        if len(row['From']) != 0 and len(row['To']) != 0:
+            startTime = datetime.strptime(row['From'], '%H%M').time()
+            endTime = datetime.strptime(row['To'], '%H%M').time()
 
-        startTime = datetime.strptime(row['From'], '%H%M').time()
-        endTime = datetime.strptime(row['To'], '%H%M').time()
+            dayStringNeeded = row['Days']
+            SuBool, SBool, FBool, ThBool, WBool, TBool, MBool = False, False, False, False, False, False, False
 
-        dayStringNeeded = row['Days']
-        SuBool, SBool, FBool, ThBool, WBool, TBool, MBool = False, False, False, False, False, False, False
+            if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'U':
+                SuBool = True
+                dayStringNeeded = dayStringNeeded[:-2]
+            if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'S':
+                SBool = True
+                dayStringNeeded = dayStringNeeded[:-1]
+            if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'F':
+                Fbool = True
+                dayStringNeeded = dayStringNeeded[:-1]
+            if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'H':
+                ThBool = True
+                dayStringNeeded = dayStringNeeded[:-2]
+            if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'W':
+                WBool = True
+                dayStringNeeded = dayStringNeeded[:-1]
+            if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'T':
+                TBool = True
+                dayStringNeeded = dayStringNeeded[:-1]
+            if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'M':
+                MBool = True
+                dayStringNeeded = dayStringNeeded[:-1]
 
-        if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'U':
-            SuBool = True
-            dayStringNeeded = dayStringNeeded[:-2]
-        if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'S':
-            SBool = True
-            dayStringNeeded = dayStringNeeded[:-1]
-        if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'F':
-            Fbool = True
-            dayStringNeeded = dayStringNeeded[:-1]
-        if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'H':
-            ThBool = True
-            dayStringNeeded = dayStringNeeded[:-2]
-        if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'W':
-            WBool = True
-            dayStringNeeded = dayStringNeeded[:-1]
-        if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'T':
-            TBool = True
-            dayStringNeeded = dayStringNeeded[:-1]
-        if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'M':
-            MBool = True
-            dayStringNeeded = dayStringNeeded[:-1]
-
-        CourseTime.objects.create(course = course,
-                                  time  = startTime,
-                                  endTime  = endTime,
-                                  m = MBool,
-                                  t = TBool,
-                                  w = WBool,
-                                  th = ThBool,
-                                  f = FBool,
-                                  s = SBool,
-                                  su = SuBool)
+            CourseTime.objects.create(course = course,
+                                      time  = startTime,
+                                      endTime  = endTime,
+                                      m = MBool,
+                                      t = TBool,
+                                      w = WBool,
+                                      th = ThBool,
+                                      f = FBool,
+                                      s = SBool,
+                                      su = SuBool)
 
 
     os.remove(pathForFile)
