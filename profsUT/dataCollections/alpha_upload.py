@@ -5,7 +5,7 @@ import requests
 from dataCollections.models import Instructor, Course, CourseTime
 from profsUT import settings
 
-import datetime
+from datetime import datetime
 import os
 
 # known problems: 
