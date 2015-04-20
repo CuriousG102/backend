@@ -86,3 +86,26 @@ class Response(models.Model):
 class RawData(models.Model):
     description = models.TextField()
     spreadsheet = models.FileField(verbose_name="XLSX Spreadsheet")
+
+class RawDataCIS(models.Model):
+    description = models.TextField()
+    spreadsheet = models.FileField(verbose_name="XLSX Spreadsheet")
+
+class CIS(models.Model):
+    instructor = models.ForeignKey('Instructor', related_name='surveys')
+    course = models.CharField(max_length=50)
+    organization = models.CharField(max_length=50)
+    college_school = models.CharField(max_length=50)
+    semester = models.CharField(max_length=30)
+    forms_distributed = models.IntegerField()
+    forms_returned = models.IntegerField()
+    instructor_was_num_respondends = models.FloatField()
+    instructor_was_average = models.FloatField()
+    instructor_was_org_average = models.FloatField()
+    instructor_was_college_school_average = models.FloatField()
+    instructor_was_uni_average = models.FloatField()
+    course_was_num_respondents = models.FloatField()
+    course_was_average = models.FloatField()
+    course_was_org_average = models.FloatField()
+    course_was_college_school_average = models.FloatField()
+    course_was_uni_average = models.FloatField()

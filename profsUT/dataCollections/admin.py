@@ -2,7 +2,8 @@ from django.contrib import admin
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 from dataCollections.models import *
 
-from alpha_upload import tableToDatabase
+import alpha_upload
+import alpha_upload_cis
 
 import logging
 
@@ -56,7 +57,16 @@ class RawDataAdmin(admin.ModelAdmin):
 
 	def db_upload(self, request, queryset):
 		for table in queryset:
-			tableToDatabase(table.spreadsheet.url)
+			alpha_upload.tableToDatabase(table.spreadsheet.url)
 
 
 admin.site.register(RawData, RawDataAdmin)
+
+class RawDataCISAdmin(admin.ModelAdmin):
+	actions = ['db_upload']
+
+	def db_upload(self, request, queryset):
+		for table in queryset:
+			alpha_upload_cis.tableToDatabase(table.spreadsheet.url)
+
+admin.site.register(RawDataCIS, RawDataCISAdmin)
