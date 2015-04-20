@@ -2,7 +2,6 @@ from django.db.models import Avg
 
 from rest_framework import serializers
 from dataCollections.models import Instructor, Course, CourseTime, Question, Response, CIS
-from videos.serializers import VideoSerializer
 
 class ResponseSerializer(serializers.ModelSerializer):
     question = serializers.ReadOnlyField(source='question.text')
@@ -40,7 +39,6 @@ class InstructorListSerializer(serializers.ModelSerializer):
 class InstructorDetailSerializer(InstructorListSerializer):
     average_rating = serializers.SerializerMethodField(method_name='instructor_rating_average')
     responses = ResponseSerializer(many = True, read_only=True)
-    video = VideoSerializer(read_only=True)
 
     class Meta:
         model = Instructor
