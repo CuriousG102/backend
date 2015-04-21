@@ -63,11 +63,11 @@ def thankYou(request):
     })
 
 class InstructorList(generics.ListAPIView):
-	queryset = Instructor.objects.all().prefetch_related('courses')
+	queryset = Instructor.objects.all().prefetch_related('courses').prefetch_related('video')
 	serializer_class = InstructorListSerializer
 
 class InstructorDetail(generics.RetrieveAPIView):
-	queryset = Instructor.objects.all().select_related('video')
+	queryset = Instructor.objects.all().prefetch_related('video')
 	serializer_class = InstructorDetailSerializer
 
 class CourseDetail(generics.RetrieveAPIView):
