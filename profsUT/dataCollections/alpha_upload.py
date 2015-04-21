@@ -15,12 +15,12 @@ import os
 # - we nwo have info on building and room number and we may want to use that
 def tableToDatabase(inFileURL):
     if settings.AWS_ENVIRONMENT:
-      pathForFile = os.path.join(settings.BASE_DIR, 'csvToDatabaseTemp.xlsx')
-      r = requests.get(inFileURL)
-      with open(pathForFile, 'wb') as f:
-          f.write(r.content)
+        pathForFile = os.path.join(settings.BASE_DIR, 'csvToDatabaseTemp.xlsx')
+        r = requests.get(inFileURL)
+        with open(pathForFile, 'wb') as f:
+            f.write(r.content)
     else:
-      pathForFile = inFileURL
+        pathForFile = os.path.join(settings.PROJECT_DIR, inFileURL)
 
     copy = copytext.Copy(pathForFile)
     sheet = copy['courses']
@@ -90,4 +90,4 @@ def tableToDatabase(inFileURL):
                                       s = SBool,
                                       su = SuBool)
     if settings.AWS_ENVIRONMENT:
-      os.remove(pathForFile)
+        os.remove(pathForFile)
