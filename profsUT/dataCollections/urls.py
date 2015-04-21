@@ -4,8 +4,9 @@ from dataCollections import views
 
 
 urlpatterns = patterns('',
-    url(r'^view/(?P<teacher_id>\d+)$', views.instructorView, name='profView'),
-    url(r'^thankyou/', views.thankYou, name='thankYou'),
+    # took Zac's forms out until he fixes them
+    # url(r'^view/(?P<teacher_id>\d+)$', views.instructorView, name='profView'),
+    # url(r'^thankyou/', views.thankYou, name='thankYou'),
     url(r'^api/instructors/$', views.InstructorList.as_view()),
 	url(r'^api/instructors/(?P<pk>[0-9]+)/$', views.InstructorDetail.as_view()),
 	url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CourseDetail.as_view()),
