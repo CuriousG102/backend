@@ -16,7 +16,7 @@ class CourseLessDetailSerializer(serializers.ModelSerializer):
         fields = ('id', 'courseID', 'courseName', 'semesterYear', 
                   'semesterSeason')
 
-class CourseTimeSerialier(serializers.ModelSerializer):
+class CourseTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseTime
         fields = ('m', 't', 'w', 'th', 'f', 's',
