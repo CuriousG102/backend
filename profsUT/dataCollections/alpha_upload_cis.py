@@ -20,7 +20,7 @@ def tableToDatabase(inFileURL):
         with open(pathForFile, 'wb') as f:
             f.write(r.content)
     else:
-        pathForFile = os.path.join(settings.PROJECT_DIR, inFileURL)
+        pathForFile = os.path.join(settings.PROJECT_DIR, inFileURL[1:])
 
     copy = copytext.Copy(pathForFile)
     sheet = copy['courses']
