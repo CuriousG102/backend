@@ -70,3 +70,5 @@ class RawDataCISAdmin(admin.ModelAdmin):
 			alpha_upload_cis.tableToDatabase(table.spreadsheet.url)
 
 admin.site.register(RawDataCIS, RawDataCISAdmin)
+
+admin.site.register(CIS)
