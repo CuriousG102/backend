@@ -10,26 +10,28 @@ class ResponseSerializer(serializers.ModelSerializer):
         model = Response
         fields = ('text', 'question')
 
-class CourseTimeSerialier(serializers.ModelSerializer):
-    class Meta:
-        model = CourseTime
-        fields = ('m', 't', 'w', 'th', 'f', 's',
-                  'su', 'time', 'endTime',)
-
 class CourseLessDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = ('id', 'courseID', 'courseName', 'semesterYear', 
                   'semesterSeason')
 
-class CourseMoreDetailSerializer(serializers.ModelSerializer):
+class CourseTimeSerialier(serializers.ModelSerializer):
+    class Meta:
+        model = CourseTime
+        fields = ('m', 't', 'w', 'th', 'f', 's',
+                  'su', 'time', 'endTime',)
+
+class CourseSerializer(serializers.ModelSerializer):
+    times = CourseTimeSerializer(many = True, read_only=True)
+
     class Meta:
         model = Course
         depth = 1
-        fields = ('id', 'courseID', 'courseName', 'semesterYear', 
-                  'semesterSeason', 'uniqueNo', 'syllabus', 
-                  'inst_provided_description', 'reg_provided_description',
-                  'times')
+        fields = ('courseID', 'courseName', 'uniqueNo',
+                  'syllabus', 'instructor', 'inst_provided_description',
+                  'reg_provided_description', 'semesterSeason', 
+                  'semesterYear', 'times')
 
 class CourseListSerializer(serializers.ModelSerializer):
     class Meta:
@@ -55,9 +57,8 @@ class InstructorListSerializer(serializers.ModelSerializer):
 class InstructorDetailSerializer(InstructorListSerializer):
     average_rating = serializers.SerializerMethodField(method_name='instructor_rating_average')
     responses = ResponseSerializer(many = True, read_only=True)
-    courses = CourseMoreDetailSerializer(many = True, read_only=True)
+    courses = CourseSerializer(many = True, read_only=True)
     video = VideoSerializer(many = True, read_only=True)
-    times = CourseTimeSerializer(many = True, read_only=True)
 
     class Meta:
         model = Instructor
@@ -65,19 +66,3 @@ class InstructorDetailSerializer(InstructorListSerializer):
 
     instructor_rating_average = instructor_rating_average
 
-class CourseTimeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CourseTime
-        fields = ('m', 't', 'w', 'th', 'f', 's', 'su',
-                  'time', 'endTime')
-
-class CourseSerializer(serializers.ModelSerializer):
-    times = CourseTimeSerializer(many = True, read_only=True)
-
-    class Meta:
-        model = Course
-        depth = 1
-        fields = ('courseID', 'courseName', 'uniqueNo',
-                  'syllabus', 'instructor', 'inst_provided_description',
-                  'reg_provided_description', 'semesterSeason', 
-                  'semesterYear', 'times')
