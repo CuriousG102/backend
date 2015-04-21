@@ -10,6 +10,12 @@ class ResponseSerializer(serializers.ModelSerializer):
         model = Response
         fields = ('text', 'question')
 
+class CourseTimeSerialier(serializers.ModelSerializer):
+    class Meta:
+        model = CourseTime
+        fields = ('m', 't', 'w', 'th', 'f', 's',
+                  'su', 'time', 'endTime',)
+
 class CourseLessDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
@@ -51,6 +57,7 @@ class InstructorDetailSerializer(InstructorListSerializer):
     responses = ResponseSerializer(many = True, read_only=True)
     courses = CourseMoreDetailSerializer(many = True, read_only=True)
     video = VideoSerializer(many = True, read_only=True)
+    times = CourseTimeSerializer(many = True, read_only=True)
 
     class Meta:
         model = Instructor
