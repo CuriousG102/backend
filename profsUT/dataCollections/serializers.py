@@ -2,7 +2,7 @@ from django.db.models import Avg
 
 from rest_framework import serializers
 from dataCollections.models import Instructor, Course, CourseTime, Question, Response, CIS
-from videos.serializer import VideoSerializer
+from videos.serializers import VideoSerializer
 
 class ResponseSerializer(serializers.ModelSerializer):
     question = serializers.ReadOnlyField(source='question.text')
