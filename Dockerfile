@@ -18,7 +18,7 @@ RUN mkdir /var/eb_log
 
 ENV PROJECT_DIR /opt/site/djangoProfs
 
-#The three following environment variables are dummies to make development easier
+#The four following environment variables are dummies to make development easier
 ENV DJANGO_SECRET_KEY 6^klb956%pm_2lhg$j%242&-cbq&c)abska6@hdg-yc+@t(7&@'
 
 ENV VIDEOS_ZENCODER_KEY ksadfasgdasff
