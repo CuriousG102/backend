@@ -99,7 +99,7 @@ class CIS(models.Model):
     semester = models.CharField(max_length=30)
     forms_distributed = models.IntegerField()
     forms_returned = models.IntegerField()
-    instructor_was_num_respondends = models.FloatField()
+    instructor_was_num_respondents = models.FloatField()
     instructor_was_average = models.FloatField()
     instructor_was_org_average = models.FloatField()
     instructor_was_college_school_average = models.FloatField()
