@@ -22,7 +22,8 @@ class CourseMoreDetailSerializer(serializers.ModelSerializer):
         depth = 1
         fields = ('id', 'courseID', 'courseName', 'semesterYear', 
                   'semesterSeason', 'uniqueNo', 'syllabus', 
-                  'inst_provided_description', 'reg_provided_description',)
+                  'inst_provided_description', 'reg_provided_description',
+                  'times')
 
 class CourseListSerializer(serializers.ModelSerializer):
     class Meta:
@@ -49,6 +50,7 @@ class InstructorDetailSerializer(InstructorListSerializer):
     average_rating = serializers.SerializerMethodField(method_name='instructor_rating_average')
     responses = ResponseSerializer(many = True, read_only=True)
     courses = CourseMoreDetailSerializer(many = True, read_only=True)
+    video = VideoSerializer(many = True, read_only=True)
 
     class Meta:
         model = Instructor
