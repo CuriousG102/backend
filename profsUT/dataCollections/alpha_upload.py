@@ -14,10 +14,13 @@ import os
 # - we are not taking cross listings into account
 # - we nwo have info on building and room number and we may want to use that
 def tableToDatabase(inFileURL):
-    pathForFile = os.path.join(settings.BASE_DIR, 'csvToDatabaseTemp.xlsx')
-    r = requests.get(inFileURL)
-    with open(pathForFile, 'wb') as f:
-        f.write(r.content)
+    if settings.AWS_ENVIRONMENT:
+      pathForFile = os.path.join(settings.BASE_DIR, 'csvToDatabaseTemp.xlsx')
+      r = requests.get(inFileURL)
+      with open(pathForFile, 'wb') as f:
+          f.write(r.content)
+    else:
+      pathForFile = inFileURL
 
     copy = copytext.Copy(pathForFile)
     sheet = copy['courses']
@@ -86,6 +89,5 @@ def tableToDatabase(inFileURL):
                                       f = FBool,
                                       s = SBool,
                                       su = SuBool)
-
-
-    os.remove(pathForFile)
+    if settings.AWS_ENVIRONMENT:
+      os.remove(pathForFile)

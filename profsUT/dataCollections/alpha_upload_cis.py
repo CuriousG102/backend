@@ -14,10 +14,13 @@ class RowHelper:
         return self.row[key].strip()
 
 def tableToDatabase(inFileURL):
-    pathForFile = os.path.join(settings.BASE_DIR, 'csvToDatabaseTemp.xlsx')
-    r = requests.get(inFileURL)
-    with open(pathForFile, 'wb') as f:
-        f.write(r.content)
+    if settings.AWS_ENVIRONMENT:
+        pathForFile = os.path.join(settings.BASE_DIR, 'csvToDatabaseTemp.xlsx')
+        r = requests.get(inFileURL)
+        with open(pathForFile, 'wb') as f:
+            f.write(r.content)
+    else:
+        pathForFile = inFileURL
 
     copy = copytext.Copy(pathForFile)
     sheet = copy['courses']
@@ -62,4 +65,5 @@ def tableToDatabase(inFileURL):
 
         CIS.objects.create(**cisConstructorDict)
 
-    os.remove(pathForFile)
+    if settings.AWS_ENVIRONMENT:
+        os.remove(pathForFile)
