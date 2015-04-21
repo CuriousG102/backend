@@ -67,7 +67,7 @@ class InstructorList(generics.ListAPIView):
 	serializer_class = InstructorListSerializer
 
 class InstructorDetail(generics.RetrieveAPIView):
-	queryset = Instructor.objects.all().prefetch_related('video')
+	queryset = Instructor.objects.all().prefetch_related('video').prefetch_related('courses')
 	serializer_class = InstructorDetailSerializer
 
 class CourseDetail(generics.RetrieveAPIView):
