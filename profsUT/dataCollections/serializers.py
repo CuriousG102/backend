@@ -23,7 +23,7 @@ class CourseListSerializer(serializers.ModelSerializer):
                   'semesterSeason', 'instructor')
 
 def instructor_rating_average(self, instructor):
-    avgDict = CIS.objects.filter(instructor=instructor).aggregate(Avg('instructor_was_avg'))
+    avgDict = CIS.objects.filter(instructor=instructor).aggregate(Avg('instructor_was_average'))
     return avgDict['instructor_was_avg__avg']
 
 class InstructorListSerializer(serializers.ModelSerializer):
