@@ -30,8 +30,8 @@ def tableToDatabase(inFileURL):
         if rHelper['college_school'] != 'Communication' or rHelper['organization'] != 'Journalism':
             continue
 
-        instructorLastName = rHelper['instructor'].split(', ')[0]
-        instructorFirstName = rHelper['instructor'].split(', ')[1]
+        instructorLastName = rHelper['instructor'].split(', ')[0].upper()
+        instructorFirstName = rHelper['instructor'].split(', ')[1].upper()
 
         try:
             instructor = Instructor.objects.get(last=instructorLastName,
