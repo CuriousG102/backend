@@ -16,7 +16,7 @@ urlpatterns = patterns('',
    							   namespace='rest_framework')),
     url(r'^videos/', include('videos.urls', namespace="videos"))
 )
-if settings.DEBUG:
+if not settings.AWS_ENVIRONMENT:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
     urlpatterns += staticfiles_urlpatterns()

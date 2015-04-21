@@ -17,12 +17,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6^klb956%pm_2lhg$j%242&-cbq&c)abska6@hdg-yc+@t(7&@'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ['DEBUG'] == 'true'
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = os.environ['DEBUG'] == 'true'
 
 ALLOWED_HOSTS = ["*"]
 
@@ -70,11 +70,12 @@ ROOT_URLCONF = 'profsUT.urls'
 
 WSGI_APPLICATION = 'profsUT.wsgi.application'
 
+AWS_ENVIRONMENT = os.environ['AWS_ENVIRONMENT'] == 'true'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-if DEBUG:
+if not AWS_ENVIRONMENT:
     PROJECT_DIR = os.environ['PROJECT_DIR']
 
     DATABASES = {
