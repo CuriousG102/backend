@@ -23,7 +23,7 @@ def tableToDatabase(inFileURL):
         pathForFile = os.path.join(settings.PROJECT_DIR, inFileURL[1:])
 
     copy = copytext.Copy(pathForFile)
-    sheet = copy['courses']
+    sheet = copy['results']
     for row in sheet:
         rHelper = RowHelper(row)
         # we only want Journalism for now
