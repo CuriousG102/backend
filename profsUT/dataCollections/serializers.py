@@ -22,6 +22,17 @@ class CourseTimeSerializer(serializers.ModelSerializer):
         fields = ('m', 't', 'w', 'th', 'f', 's',
                   'su', 'time', 'endTime',)
 
+class CourseInstructorEmbedSerializer(serializers.ModelSerializer):
+    times = CourseTimeSerializer(many = True, read_only=True)
+
+    class Meta:
+        model = Course
+        depth = 1
+        fields = ('courseID', 'courseName', 'uniqueNo',
+                  'syllabus', 'inst_provided_description',
+                  'reg_provided_description', 'semesterSeason', 
+                  'semesterYear', 'times')
+
 class CourseSerializer(serializers.ModelSerializer):
     times = CourseTimeSerializer(many = True, read_only=True)
 
@@ -57,7 +68,7 @@ class InstructorListSerializer(serializers.ModelSerializer):
 class InstructorDetailSerializer(InstructorListSerializer):
     average_rating = serializers.SerializerMethodField(method_name='instructor_rating_average')
     responses = ResponseSerializer(many = True, read_only=True)
-    courses = CourseSerializer(many = True, read_only=True)
+    courses = CourseInstructorEmbedSerializer(many = True, read_only=True)
     video = VideoSerializer(many = True, read_only=True)
 
     class Meta:
