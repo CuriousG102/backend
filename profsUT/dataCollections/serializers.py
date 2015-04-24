@@ -31,7 +31,7 @@ class CourseInstructorEmbedSerializer(serializers.ModelSerializer):
         fields = ('courseID', 'courseName', 'uniqueNo',
                   'syllabus', 'inst_provided_description',
                   'reg_provided_description', 'semesterSeason', 
-                  'semesterYear', 'times')
+                  'semesterYear', 'times', 'id')
 
 class CourseSerializer(serializers.ModelSerializer):
     times = CourseTimeSerializer(many = True, read_only=True)
