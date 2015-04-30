@@ -7,7 +7,7 @@ class VideoSerializer(serializers.ModelSerializer):
         model = Video
         fields = ('video_url', 'video_thumbnail_url')
 
-class VideoListSerializer(serialiers.ModelSerializer):
+class VideoListSerializer(serializers.ModelSerializer):
     class Meta:
         depth = 1
         model = Video
