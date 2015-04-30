@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'storages',
     'videos',
+    'debug_toolbar',
 )
 
 REST_FRAMEWORK = {

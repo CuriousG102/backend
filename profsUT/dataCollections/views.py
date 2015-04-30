@@ -81,5 +81,5 @@ class CourseList(generics.ListAPIView):
     serializer_class = CourseListSerializer
 
 class VideoList(generics.ListAPIView):
-    queryset = Course.objects.all().select_related('instructor')
+    queryset = Video.objects.all().select_related('instructor')
     serializer_class = VideoListSerializer
