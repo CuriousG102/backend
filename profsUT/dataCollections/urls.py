@@ -11,4 +11,5 @@ urlpatterns = patterns('',
 	url(r'^api/instructors/(?P<pk>[0-9]+)/$', views.InstructorDetail.as_view()),
 	url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CourseDetail.as_view()),
     url(r'^api/courses/$', views.CourseList.as_view()),
+    url(r'^api/videos/$', views.VideoList.as_view()),
 )

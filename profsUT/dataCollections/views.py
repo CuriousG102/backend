@@ -4,7 +4,9 @@ from django.views import generic
 from dataCollections.forms import ResponseForm
 from django.forms.formsets import formset_factory, BaseFormSet
 from dataCollections.models import Instructor, Course, Question, Response
+from videos.models import Video
 from dataCollections.serializers import InstructorListSerializer, InstructorDetailSerializer, CourseSerializer, CourseListSerializer
+from videos.serializers import VideoListSerializer
 from rest_framework import generics
 
 def instructorView(request, teacher_id):
@@ -77,3 +79,7 @@ class CourseDetail(generics.RetrieveAPIView):
 class CourseList(generics.ListAPIView):
     queryset = Course.objects.all().select_related('instructor')
     serializer_class = CourseListSerializer
+
+class VideoList(generics.ListAPIView):
+    queryset = Course.objects.all().select_related('instructor')
+    serializer_class = VideoListSerializer
