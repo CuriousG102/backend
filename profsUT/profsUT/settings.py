@@ -45,6 +45,10 @@ INSTALLED_APPS = (
     'debug_toolbar',
 )
 
+DEBUG_TOOLBAR_CONFIG = { # eliminate the check for internal ip
+    'SHOW_TOOLBAR_CALLBACK': lambda x: x.is_ajax() and settings.DEBUG
+}
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'permissions.permissions.ReadOnly',
