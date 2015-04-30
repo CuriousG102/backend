@@ -64,7 +64,7 @@ def tableToDatabase(inFileURL):
                 SBool = True
                 dayStringNeeded = dayStringNeeded[:-1]
             if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'F':
-                Fbool = True
+                FBool = True
                 dayStringNeeded = dayStringNeeded[:-1]
             if len(dayStringNeeded) > 0 and dayStringNeeded[-1] == 'H':
                 ThBool = True
