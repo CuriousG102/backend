@@ -46,7 +46,7 @@ INSTALLED_APPS = (
 )
 
 DEBUG_TOOLBAR_CONFIG = { # eliminate the check for internal ip
-    'SHOW_TOOLBAR_CALLBACK': lambda x: x.is_ajax() and settings.DEBUG
+    'SHOW_TOOLBAR_CALLBACK': lambda x: (not x.is_ajax()) and settings.DEBUG
 }
 
 REST_FRAMEWORK = {
